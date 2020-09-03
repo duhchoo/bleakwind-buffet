@@ -66,7 +66,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Returns a list of instructions to add or remove toppings.
         /// </summary>
-        public List<string> SpecialInstruction
+        public List<string> SpecialInstructions
         {
             get
             {
