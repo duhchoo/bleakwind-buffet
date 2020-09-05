@@ -58,6 +58,28 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         }
 
         [Theory]
+        [InlineData(Size.Small, 0.00)]
+        [InlineData(Size.Medium, 0.00)]
+        [InlineData(Size.Large, 0.00)]
+        public void ShouldHaveCorrectPriceForSize(Size size, double price)
+        {
+            WarriorWater ww = new WarriorWater();
+            ww.Size = size;
+            Assert.Equal(price, ww.Price);
+        }
+
+        [Theory]
+        [InlineData(Size.Small, 0)]
+        [InlineData(Size.Medium, 0)]
+        [InlineData(Size.Large, 0)]
+        public void ShouldHaveCorrectCaloriesForSize(Size size, uint cal)
+        {
+            WarriorWater ww = new WarriorWater();
+            ww.Size = size;
+            Assert.Equal(cal, ww.Calories);
+        }
+
+        [Theory]
         [InlineData(true, true)]
         [InlineData(true, false)]
         [InlineData(false, true)]
