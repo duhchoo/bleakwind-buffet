@@ -117,8 +117,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             chc.Ice = includeIce;
             chc.RoomForCream = includeCream;
             if (includeIce) Assert.Contains("Add ice", chc.SpecialInstructions);
-            else if (includeCream) Assert.Contains("Add cream", chc.SpecialInstructions);
-            else Assert.Empty(chc.SpecialInstructions);
+            else Assert.DoesNotContain("Add ice", chc.SpecialInstructions);
+            if (includeCream) Assert.Contains("Add cream", chc.SpecialInstructions);
+            else Assert.DoesNotContain("Add cream", chc.SpecialInstructions);
         }
 
         [Theory]
