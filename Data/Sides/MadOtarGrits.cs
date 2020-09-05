@@ -22,12 +22,12 @@ namespace BleakwindBuffet.Data.Sides
         /// </summary>
         public double Price
         {
-            get => _price;
-            private set
+            get
             {
-                if (Size == Size.Small) _price = 1.22;
-                if (Size == Size.Medium) _price = 1.58;
-                if (Size == Size.Large) _price = 1.93;
+                if (Size == Size.Small) return 1.22;
+                if (Size == Size.Medium) return 1.58;
+                if (Size == Size.Large) return 1.93;
+                throw new NotImplementedException();
             }
         }
 
@@ -41,12 +41,12 @@ namespace BleakwindBuffet.Data.Sides
         /// </summary>
         public uint Calories
         {
-            get => _calories;
-            private set
+            get
             {
-                if (Size == Size.Small) _calories = 105;
-                if (Size == Size.Medium) _calories = 142;
-                if (Size == Size.Large) _calories = 179;
+                if (Size == Size.Small) return 105;
+                if (Size == Size.Medium) return 142;
+                if (Size == Size.Large) return 179;
+                throw new NotImplementedException();
             }
         }
 

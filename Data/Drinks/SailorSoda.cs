@@ -22,12 +22,12 @@ namespace BleakwindBuffet.Data.Drinks
         /// </summary>
         public double Price
         {
-            get => _price;
-            private set
+            get
             {
-                if (Size == Size.Small) _price = 1.42;
-                if (Size == Size.Medium) _price = 1.74;
-                if (Size == Size.Large) _price = 2.07;
+                if (Size == Size.Small) return 1.42;
+                if (Size == Size.Medium) return 1.74;
+                if (Size == Size.Large) return 2.07;
+                throw new NotImplementedException();
             }
         }
 
@@ -41,12 +41,12 @@ namespace BleakwindBuffet.Data.Drinks
         /// </summary>
         public uint Calories
         {
-            get => _calories;
-            private set
+            get
             {
-                if (Size == Size.Small) _calories = 117;
-                if (Size == Size.Medium) _calories = 153;
-                if (Size == Size.Large) _calories = 205;
+                if (Size == Size.Small) return 117;
+                if (Size == Size.Medium) return 153;
+                if (Size == Size.Large) return 205;
+                throw new NotImplementedException();
             }
         }
 
@@ -76,7 +76,7 @@ namespace BleakwindBuffet.Data.Drinks
             get
             {
                 List<string> instructions = new List<string>();
-                if (!Ice) instructions.Add("Hold Ice");
+                if (!Ice) instructions.Add("Hold ice");
                 return instructions;
             }
         }

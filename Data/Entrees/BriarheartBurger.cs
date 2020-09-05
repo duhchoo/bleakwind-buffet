@@ -54,11 +54,11 @@ namespace BleakwindBuffet.Data.Entrees
             get
             {
                 List<string> instructions = new List<string>();
-                if (!Bun) instructions.Add("Hold Bun");
-                if (!Ketchup) instructions.Add("Hold Ketchup");
-                if (!Mustard) instructions.Add("Hold Mustard");
-                if (!Pickle) instructions.Add("Hold Pickle");
-                if (!Cheese) instructions.Add("Hold Cheese");
+                if (!Bun) instructions.Add("Hold bun");
+                if (!Ketchup) instructions.Add("Hold ketchup");
+                if (!Mustard) instructions.Add("Hold mustard");
+                if (!Pickle) instructions.Add("Hold pickle");
+                if (!Cheese) instructions.Add("Hold cheese");
                 return instructions;
             }
         }
