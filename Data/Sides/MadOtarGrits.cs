@@ -10,17 +10,12 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Sides
 {
-    public class MadOtarGrits
+    public class MadOtarGrits : Side, IOrderItem
     {
-        /// <summary>
-        /// Gets the price of the side.
-        /// </summary>
-        private double _price = 1.22;
-
         /// <summary>
         /// Gets and sets the price of the side.
         /// </summary>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -32,14 +27,9 @@ namespace BleakwindBuffet.Data.Sides
         }
 
         /// <summary>
-        /// Gets the calories of the side.
-        /// </summary>
-        private uint _calories = 105;
-
-        /// <summary>
         /// Gets and sets the calories of the side.
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -51,15 +41,9 @@ namespace BleakwindBuffet.Data.Sides
         }
 
         /// <summary>
-        /// The size of the side.
-        /// </summary>
-        public Size Size
-        { get; set; } = Size.Small;
-
-        /// <summary>
         /// Returns an empty list.
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {

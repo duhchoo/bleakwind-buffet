@@ -10,17 +10,12 @@ using System.Text;
 
 namespace BleakwindBuffet.Data.Drinks
 {
-    public class SailorSoda
-    {
-        /// <summary>
-        /// Gets the price of the drink.
-        /// </summary>
-        private double _price = 1.42;
-
+    public class SailorSoda : Drink, IOrderItem
+    { 
         /// <summary>
         /// Gets and sets the price of the drink.
         /// </summary>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -32,14 +27,9 @@ namespace BleakwindBuffet.Data.Drinks
         }
 
         /// <summary>
-        /// Gets the calories of the drink.
-        /// </summary>
-        private uint _calories = 117;
-
-        /// <summary>
         /// Gets and sets the calories of the drink.
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -49,12 +39,6 @@ namespace BleakwindBuffet.Data.Drinks
                 throw new NotImplementedException();
             }
         }
-
-        /// <summary>
-        /// The size of the drink.
-        /// </summary>
-        public Size Size
-        { get; set; } = Size.Small;
 
         /// <summary>
         /// The flavor of the drink.
@@ -71,7 +55,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Returns a list of instructions to add or remove toppings.
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {
