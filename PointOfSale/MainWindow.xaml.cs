@@ -23,32 +23,7 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
-        }
-        public void Click(object sender, RoutedEventArgs e)
-        {
-            Button butt = (Button)sender;
 
-            if (butt.Name == "briarheartButton" || butt.Name == "draugrButton" || butt.Name == "omeletteButton" || butt.Name == "phillyButton" ||
-                butt.Name == "skeletonButton" || butt.Name == "thalmorButton" || butt.Name == "thugsButton")
-            {
-                ingredientBorder.Child = new IngredientControl("entree", butt.Name);
-            }
-
-            else if (butt.Name == "juiceButton" || butt.Name == "coffeeButton" || butt.Name == "milkButton" || butt.Name == "sodaButton" ||
-                butt.Name == "waterButton")
-            {
-                ingredientBorder.Child = new IngredientControl("drink", butt.Name);
-            }
-
-            else if (butt.Name == "friesButton" || butt.Name == "miraakButton" || butt.Name == "gritsButton" || butt.Name == "saladButton" ||
-                butt.Name == "skeletonButton" || butt.Name == "thalmorButton" || butt.Name == "thugsButton")
-            {
-                ingredientBorder.Child = new IngredientControl("side", butt.Name);
-            }
-            else
-            {
-                MessageBox.Show("Nothing");
-            }
         }
 
 

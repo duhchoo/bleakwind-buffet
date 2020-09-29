@@ -18,32 +18,33 @@ namespace PointOfSale
     /// </summary>
     public partial class IngredientControl : UserControl
     {
-        string _foodType;
-        string _foodItem;
+
+        MenuControl buttons;
 
         /// <summary>
         /// Finds which type of food it is.
         /// </summary>
         /// <param name="type"> The type of food. </param>
         /// <param name="food"> The name of the food. </param>
-        public IngredientControl(string type, string food)
+        public IngredientControl(MenuControl butt, string type, string food)
         {
             InitializeComponent();
-            //Background = Brushes.White;
-            _foodType = type;
-            _foodItem = food;
+            this.buttons = butt;
 
-            if (_foodType.Equals("entree"))
+            string foodType = type;
+            string foodItem = food;
+
+            if (foodType.Equals("entree"))
             {
-                FindEntree(_foodItem);
+                FindEntree(foodItem);
             }
-            else if (_foodType.Equals("drink"))
+            else if (foodType.Equals("drink"))
             {
-                FindDrink(_foodItem);
+                FindDrink(foodItem);
             }
             else
             {
-                FindSide(_foodItem);
+                FindSide(foodItem);
             }
         }
 
@@ -334,7 +335,7 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void add_Click(object sender, RoutedEventArgs e)
         {
-            ingredientGrid.Visibility = Visibility.Hidden;
+            buttons.Swap("");
         }
     }
 }

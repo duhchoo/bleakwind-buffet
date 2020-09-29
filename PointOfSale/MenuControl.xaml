@@ -1,0 +1,329 @@
+﻿<UserControl x:Class="PointOfSale.MenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        
+
+        <!--The room for swapping the menu buttons to the ingredient checkboxes-->
+        <Border Name="swapBorder" Grid.ColumnSpan="6" Grid.RowSpan="20">
+            <!--Defines the columns-->
+            <Grid>
+                <!--Defines the columns for the border of item buttons-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="2.3*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="2.3*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="2.3*"/>
+                </Grid.ColumnDefinitions>
+                <!--Defines the rows for the border of item buttons-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.7*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!--The label for the entrees-->
+                <Label Name="entreeLabel" 
+               Content="Choose an Entree" 
+               Grid.Column="1" Grid.Row="0" 
+               FontSize="17" 
+               FontFamily="inconsolata" 
+               HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center">
+                </Label>
+                <Label Name="healthLabel" 
+               Content="for HEALTH" 
+               Grid.Column="1" Grid.Row="1" 
+               FontSize="12" 
+               FontFamily="inconsolata" 
+               HorizontalContentAlignment="Center">
+                </Label>
+
+                <!--The label for the drinks-->
+                <Label Name="drinkLabel" 
+               Content="Choose a Drink" 
+               Grid.Column="3" Grid.Row="0" 
+               FontSize="17" 
+               FontFamily="inconsolata" 
+               HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center">
+                </Label>
+                <Label Name="magickaLabel" 
+               Content="for MAGICKA" 
+               Grid.Column="3" Grid.Row="1" 
+               FontSize="12" 
+               FontFamily="inconsolata" 
+               HorizontalContentAlignment="Center">
+                </Label>
+
+                <!--The label for the sides-->
+                <Label Name="sideLabel" 
+               Content="Choose a Side" 
+               Grid.Column="5" Grid.Row="0" 
+               FontSize="17" 
+               FontFamily="inconsolata" 
+               HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center">
+                </Label>
+                <Label Name="staminaLabel" 
+               Content="for STAMINA" 
+               Grid.Column="5" Grid.Row="1" 
+               FontSize="12" 
+               FontFamily="inconsolata" 
+               HorizontalContentAlignment="Center">
+                </Label>
+
+                <!--The button for the Briarheart Burger-->
+                <Border Grid.Column="1" Grid.Row="2" BorderBrush="Black">
+                    <Button Name="briarheartButton" Click="Click" Background="IndianRed" FontSize="17" FontFamily="inconsolata">
+                        Briarheart Burger
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Double Draugr-->
+                <Border Grid.Column="1" Grid.Row="4" BorderBrush="Black">
+                    <Button Name="draugrButton" Click="Click" Background="IndianRed" FontSize="17" FontFamily="inconsolata">
+                        Double Draugr
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Briarheart Burger-->
+                <Border Grid.Column="1" Grid.Row="6" BorderBrush="Black">
+                    <Button Name="thalmorButton" Click="Click" Background="IndianRed" FontSize="17" FontFamily="inconsolata">
+                        Thalmor Triple
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Smokehouse Skeleton-->
+                <Border Grid.Column="1" Grid.Row="8" BorderBrush="Black">
+                    <Button Name="skeletonButton" Click="Click" Background="IndianRed" FontSize="15" FontFamily="inconsolata">
+                        Smokehouse Skeleton
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Garden Orc Omelette-->
+                <Border Grid.Column="1" Grid.Row="10" BorderBrush="Black">
+                    <Button Name="omeletteButton" Click="Click" Background="IndianRed" FontSize="15" FontFamily="inconsolata">
+                        Garden Orc Omelette
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Thugs T-Bone-->
+                <Border Grid.Column="1" Grid.Row="12" BorderBrush="Black">
+                    <Button Name="thugsButton" Click="Click" Background="IndianRed" FontSize="17" FontFamily="inconsolata">
+                        Thugs T-Bone
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Philly Poacher-->
+                <Border Grid.Column="1" Grid.Row="14" BorderBrush="Black">
+                    <Button Name="phillyButton" Click="Click" Background="IndianRed" FontSize="17" FontFamily="inconsolata">
+                        Philly Poacher
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Sailor Soda-->
+                <Border Grid.Column="3" Grid.Row="2" BorderBrush="Black">
+                    <Button Name="sodaButton" Click="Click" Background="DeepSkyBlue" FontSize="17" FontFamily="inconsolata">
+                        Sailor Soda
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Markarth Milk-->
+                <Border Grid.Column="3" Grid.Row="4" BorderBrush="Black">
+                    <Button Name="milkButton" Click="Click" Background="DeepSkyBlue" FontSize="17" FontFamily="inconsolata">
+                        Markarth Milk
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Aretino Apple Juice-->
+                <Border Grid.Column="3" Grid.Row="6" BorderBrush="Black">
+                    <Button Name="juiceButton" Click="Click" Background="DeepSkyBlue" FontSize="15" FontFamily="inconsolata">
+                        Aretino Apple Juice
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Candlehearth Coffee-->
+                <Border Grid.Column="3" Grid.Row="8" BorderBrush="Black">
+                    <Button Name="coffeeButton" Click="Click" Background="DeepSkyBlue" FontSize="15" FontFamily="inconsolata">
+                        Candlehearth Coffee
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Warrior Water-->
+                <Border Grid.Column="3" Grid.Row="10" BorderBrush="Black" >
+                    <Button Name="waterButton" Click="Click" Background="DeepSkyBlue" FontSize="17" FontFamily="inconsolata">
+                        Warrior Water
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Vokun Salad-->
+                <Border Grid.Column="5" Grid.Row="2" BorderBrush="Black" >
+                    <Button Name="saladButton" Click="Click" Background="MediumSeaGreen" FontSize="17" FontFamily="inconsolata">
+                        Vokun Salad
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Fried Miraak-->
+                <Border Grid.Column="5" Grid.Row="4" BorderBrush="Black" >
+                    <Button Name="miraakButton" Click="Click" Background="MediumSeaGreen" FontSize="17" FontFamily="inconsolata">
+                        Fried Miraak
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Mad Otar Grits-->
+                <Border Grid.Column="5" Grid.Row="6" BorderBrush="Black" >
+                    <Button Name="gritsButton" Click="Click" Background="MediumSeaGreen" FontSize="17" FontFamily="inconsolata">
+                        Mad Otar Grits
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+
+                <!--The button for the Dragonborn Waffle Fries-->
+                <Border Grid.Column="5" Grid.Row="8" BorderBrush="Black" >
+                    <Button Name="friesButton" Click="Click" Background="MediumSeaGreen" FontSize="15" FontFamily="inconsolata">
+                        Dragonborn Waffle Fries
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border Name="ingredientBorder" Grid.ColumnSpan="6" Grid.RowSpan="20">
+            <Grid>
+
+                <!--Defines the columns for the border of ingredients-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="2.3*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="2.3*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="2.3*"/>
+                </Grid.ColumnDefinitions>
+                <!--Defines the rows for the border of ingredients-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.7*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
