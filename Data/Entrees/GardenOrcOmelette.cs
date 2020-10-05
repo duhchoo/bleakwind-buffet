@@ -6,11 +6,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
-    public class GardenOrcOmelette : Entree, IOrderItem
+    public class GardenOrcOmelette : Entree, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// The event handler for changes in the properties.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets the price of the omelette.
         /// </summary>
@@ -21,25 +27,77 @@ namespace BleakwindBuffet.Data.Entrees
         /// </summary>
         public override uint Calories => 404;
 
+        bool broccoli = true;
+
         /// <summary>
         /// Property is true when the broccoli is added.
         /// </summary>
-        public bool Broccoli { get; set; } = true;
+        public bool Broccoli
+        {
+            get => broccoli;
+            set
+            {
+                if (broccoli != value)
+                {
+                    broccoli = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Broccoli"));
+                }
+            }
+        }
+
+        bool mushrooms = true;
 
         /// <summary>
         /// Property is true when the mushrooms are added.
         /// </summary>
-        public bool Mushrooms { get; set; } = true;
+        public bool Mushrooms
+        {
+            get => mushrooms;
+            set
+            {
+                if (mushrooms != value)
+                {
+                    mushrooms = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mushrooms"));
+                }
+            }
+        }
+
+        bool tomato = true;
 
         /// <summary>
         /// Property is true when the tomato is added.
         /// </summary>
-        public bool Tomato { get; set; } = true;
+        public bool Tomato
+        {
+            get => tomato;
+            set
+            {
+                if (tomato != value)
+                {
+                    tomato = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
+                }
+            }
+        }
+
+        bool cheddar = true;
 
         /// <summary>
         /// Property is true when the cheddar is added.
         /// </summary>
-        public bool Cheddar { get; set; } = true;
+        public bool Cheddar
+        {
+            get => cheddar;
+            set
+            {
+                if (cheddar != value)
+                {
+                    cheddar = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheddar"));
+                }
+            }
+        }
 
         /// <summary>
         /// Returns a list of instructions to add or remove toppings.
@@ -53,6 +111,7 @@ namespace BleakwindBuffet.Data.Entrees
                 if (!Mushrooms) instructions.Add("Hold mushrooms");
                 if (!Tomato) instructions.Add("Hold tomato");
                 if (!Cheddar) instructions.Add("Hold cheddar");
+                if (instructions.Count > 0) PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 return instructions;
             }
         }

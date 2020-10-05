@@ -146,5 +146,79 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             ss.Size = size;
             Assert.Equal(name, ss.ToString());
         }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            var SS = new SailorSoda();
+
+            Assert.PropertyChanged(SS, "Size", () =>
+            {
+                SS.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(SS, "Size", () =>
+            {
+                SS.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(SS, "Size", () =>
+            {
+                SS.Size = Size.Large;
+            });
+        }
+
+
+        [Fact]
+        public void ChangingIceNotifiesIceProperty()
+        {
+            var SS = new SailorSoda();
+
+            Assert.PropertyChanged(SS, "Ice", () =>
+            {
+                SS.Ice = true;
+            });
+
+            Assert.PropertyChanged(SS, "Ice", () =>
+            {
+                SS.Ice = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingFlavorNotifiesFlavorProperty()
+        {
+            var SS = new SailorSoda();
+
+            Assert.PropertyChanged(SS, "Flavor", () =>
+            {
+                SS.Flavor = SodaFlavor.Blackberry;
+            });
+
+            Assert.PropertyChanged(SS, "Flavor", () =>
+            {
+                SS.Flavor = SodaFlavor.Cherry;
+            });
+
+            Assert.PropertyChanged(SS, "Flavor", () =>
+            {
+                SS.Flavor = SodaFlavor.Grapefruit;
+            });
+
+            Assert.PropertyChanged(SS, "Flavor", () =>
+            {
+                SS.Flavor = SodaFlavor.Lemon;
+            });
+
+            Assert.PropertyChanged(SS, "Flavor", () =>
+            {
+                SS.Flavor = SodaFlavor.Peach;
+            });
+
+            Assert.PropertyChanged(SS, "Flavor", () =>
+            {
+                SS.Flavor = SodaFlavor.Watermelon;
+            });
+        }
     }
 }

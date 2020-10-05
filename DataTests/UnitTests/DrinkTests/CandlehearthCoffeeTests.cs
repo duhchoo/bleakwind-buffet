@@ -150,5 +150,74 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             chc.Decaf = decaf;
             Assert.Equal(name, chc.ToString());
         }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            var chc = new CandlehearthCoffee();
+
+            Assert.PropertyChanged(chc, "Size", () =>
+            {
+                chc.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(chc, "Size", () =>
+            {
+                chc.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(chc, "Size", () =>
+            {
+                chc.Size = Size.Large;
+            });
+        }
+
+        [Fact]
+        public void ChangingIceNotifiesIceProperty()
+        {
+            var chc = new CandlehearthCoffee();
+
+            Assert.PropertyChanged(chc, "Ice", () =>
+            {
+                chc.Ice = true;
+            });
+
+            Assert.PropertyChanged(chc, "Ice", () =>
+            {
+                chc.Ice = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingDecafNotifiesDecafProperty()
+        {
+            var chc = new CandlehearthCoffee();
+
+            Assert.PropertyChanged(chc, "Decaf", () =>
+            {
+                chc.Decaf = true;
+            });
+
+            Assert.PropertyChanged(chc, "Decaf", () =>
+            {
+                chc.Decaf = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingRoomForCreamNotifiesRoomForCreamProperty()
+        {
+            var chc = new CandlehearthCoffee();
+
+            Assert.PropertyChanged(chc, "RoomForCream", () =>
+            {
+                chc.RoomForCream = true;
+            });
+
+            Assert.PropertyChanged(chc, "RoomForCream", () =>
+            {
+                chc.RoomForCream = false;
+            });
+        }
     }
 }

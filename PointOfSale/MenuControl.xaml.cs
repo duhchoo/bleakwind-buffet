@@ -32,28 +32,75 @@ namespace PointOfSale
 
         public void Swap (string sendy)
         {
+            switch (sendy)
+            {
+                //Drinks
+                case "juiceButton":
+                    swapBorder.Child = new AretinoAppleJuiceCustomization(this);
+                    break;
 
-            if (sendy == "briarheartButton" || sendy == "draugrButton" || sendy == "omeletteButton" || sendy == "phillyButton" ||
-                sendy == "skeletonButton" || sendy == "thalmorButton" || sendy == "thugsButton")
-            {
-                swapBorder.Child = new IngredientControl(this, "entree", sendy);
-            }
+                case "waterButton":
+                    swapBorder.Child = new WarriorWaterCustomization(this);
+                    break;
 
-            else if (sendy == "juiceButton" || sendy == "coffeeButton" || sendy == "milkButton" || sendy == "sodaButton" ||
-                sendy == "waterButton")
-            {
-                swapBorder.Child = new IngredientControl(this, "drink", sendy);
-            }
+                case "coffeeButton":
+                    swapBorder.Child = new CandlehearthCoffeeCustomization(this);
+                    break;
 
-            else if (sendy == "friesButton" || sendy == "miraakButton" || sendy == "gritsButton" || sendy == "saladButton" ||
-                sendy == "skeletonButton" || sendy == "thalmorButton" || sendy == "thugsButton")
-            {
-                swapBorder.Child = new IngredientControl(this, "side", sendy );
-            }
-            else
-            {
-                swapBorder.Child = new MenuControl();
+                case "sodaButton":
+                    swapBorder.Child = new SailorSodaCustomization(this);
+                    break;
+
+                case "milkButton":
+                    swapBorder.Child = new MarkarthMilkCustomization(this);
+                    break;
+
+
+                //Sides
+                case "friesButton":
+                    swapBorder.Child = new DragonbornWaffleFriesCustomization(this);
+                    break;
+                case "miraakButton":
+                    swapBorder.Child = new FriedMiraakCustomization(this);
+                    break;
+                case "saladButton":
+                    swapBorder.Child = new VokunSaladCustomization(this);
+                    break;
+                case "gritsButton":
+                    swapBorder.Child = new MadOtarGritsCustomization(this);
+                    break;
+
+
+                //Entrees
+                case "briarheartButton":
+                    swapBorder.Child = new BriarheartBurgerCustomization(this);
+                    break;
+                case "draugrButton":
+                    swapBorder.Child = new DoubleDraugrCustomization(this);
+                    break;
+                case "omeletteButton":
+                    swapBorder.Child = new GardenOrcOmeletteCustomization(this);
+                    break;
+                case "phillyButton":
+                    swapBorder.Child = new PhillyPoacherCustomization(this);
+                    break;
+                case "skeletonButton":
+                    swapBorder.Child = new SmokehouseSkeletonCustomization(this);
+                    break;
+                case "thalmorButton":
+                    swapBorder.Child = new ThalmorTripleCustomization(this);
+                    break;
+                case "thugsButton":
+                    swapBorder.Child = new ThugsTBoneCustomization(this);
+                    break;
+
+                //End Case
+                case "":
+                    swapBorder.Child = new MenuControl();
+                    break;
             }
         }
     }
 }
+
+
