@@ -163,7 +163,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 
             Assert.PropertyChanged(chc, "Size", () =>
             {
-                chc.Size = Size.Medium;
+                chc.Size = Size.Small;
             });
 
             Assert.PropertyChanged(chc, "Size", () =>

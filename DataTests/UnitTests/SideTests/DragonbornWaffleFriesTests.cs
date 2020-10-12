@@ -91,7 +91,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 
             Assert.PropertyChanged(dbwf, "Size", () =>
             {
-                dbwf.Size = Size.Medium;
+                dbwf.Size = Size.Small;
             });
 
             Assert.PropertyChanged(dbwf, "Size", () =>

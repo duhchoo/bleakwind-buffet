@@ -141,13 +141,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(shs, "SausageLink", () =>
             {
-                shs.SausageLink = true;
+                shs.SausageLink = false;
             });
 
             Assert.PropertyChanged(shs, "SausageLink", () =>
             {
-                shs.SausageLink = false;
+                shs.SausageLink = true;
             });
+
         }
 
         [Fact]
@@ -157,13 +158,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(shs, "Egg", () =>
             {
-                shs.Egg = true;
+                shs.Egg = false;
             });
 
             Assert.PropertyChanged(shs, "Egg", () =>
             {
-                shs.Egg = false;
+                shs.Egg = true;
             });
+
         }
 
         [Fact]
@@ -173,13 +175,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(shs, "HashBrowns", () =>
             {
-                shs.HashBrowns = true;
+                shs.HashBrowns = false;
             });
 
             Assert.PropertyChanged(shs, "HashBrowns", () =>
             {
-                shs.HashBrowns = false;
+                shs.HashBrowns = true;
             });
+
         }
 
         [Fact]
@@ -189,13 +192,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(shs, "Pancake", () =>
             {
-                shs.Pancake = true;
+                shs.Pancake = false;
             });
 
             Assert.PropertyChanged(shs, "Pancake", () =>
             {
-                shs.Pancake = false;
+                shs.Pancake = true;
             });
+
         }
     }
 }

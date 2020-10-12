@@ -123,13 +123,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(pp, "Sirloin", () =>
             {
-                pp.Sirloin = true;
+                pp.Sirloin = false;
             });
 
             Assert.PropertyChanged(pp, "Sirloin", () =>
             {
-                pp.Sirloin = false;
+                pp.Sirloin = true;
             });
+
         }
 
         [Fact]
@@ -139,13 +140,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(pp, "Onion", () =>
             {
-                pp.Onion = true;
+                pp.Onion = false;
             });
 
             Assert.PropertyChanged(pp, "Onion", () =>
             {
-                pp.Onion = false;
+                pp.Onion = true;
             });
+
         }
 
         [Fact]
@@ -155,13 +157,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(pp, "Roll", () =>
             {
-                pp.Roll = true;
+                pp.Roll = false;
             });
 
             Assert.PropertyChanged(pp, "Roll", () =>
             {
-                pp.Roll = false;
+                pp.Roll = true;
             });
+
         }
     }
 }

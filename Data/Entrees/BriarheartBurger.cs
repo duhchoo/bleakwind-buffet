@@ -84,7 +84,7 @@ namespace BleakwindBuffet.Data.Entrees
             }
         }
 
-        bool pickle = true;
+        private bool pickle = true;
 
         /// <summary>
         /// Property is true when the pickles are added.

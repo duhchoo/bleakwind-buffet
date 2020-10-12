@@ -256,13 +256,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(tt, "Bun", () =>
             {
-                tt.Bun = true;
+                tt.Bun = false;
             });
 
             Assert.PropertyChanged(tt, "Bun", () =>
             {
-                tt.Bun = false;
+                tt.Bun = true;
             });
+
         }
 
         [Fact]
@@ -272,13 +273,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(tt, "Ketchup", () =>
             {
-                tt.Ketchup = true;
+                tt.Ketchup = false;
             });
 
             Assert.PropertyChanged(tt, "Ketchup", () =>
             {
-                tt.Ketchup = false;
+                tt.Ketchup = true;
             });
+
         }
 
         [Fact]
@@ -288,13 +290,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(tt, "Mustard", () =>
             {
-                tt.Mustard = true;
+                tt.Mustard = false;
             });
 
             Assert.PropertyChanged(tt, "Mustard", () =>
             {
-                tt.Mustard = false;
+                tt.Mustard = true;
             });
+
         }
 
         [Fact]
@@ -304,13 +307,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(tt, "Pickle", () =>
             {
-                tt.Pickle = true;
+                tt.Pickle = false;
             });
 
             Assert.PropertyChanged(tt, "Pickle", () =>
             {
-                tt.Pickle = false;
+                tt.Pickle = true;
             });
+
         }
 
         [Fact]
@@ -320,13 +324,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(tt, "Cheese", () =>
             {
-                tt.Cheese = true;
+                tt.Cheese = false;
             });
 
             Assert.PropertyChanged(tt, "Cheese", () =>
             {
-                tt.Cheese = false;
+                tt.Cheese = true;
             });
+
         }
 
         [Fact]
@@ -336,13 +341,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(tt, "Tomato", () =>
             {
-                tt.Tomato = true;
+                tt.Tomato = false;
             });
 
             Assert.PropertyChanged(tt, "Tomato", () =>
             {
-                tt.Tomato = false;
+                tt.Tomato = true;
             });
+
         }
 
         [Fact]
@@ -352,13 +358,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(tt, "Lettuce", () =>
             {
-                tt.Lettuce = true;
+                tt.Lettuce = false;
             });
 
             Assert.PropertyChanged(tt, "Lettuce", () =>
             {
-                tt.Lettuce = false;
+                tt.Lettuce = true;
             });
+
         }
 
         [Fact]
@@ -368,13 +375,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(tt, "Mayo", () =>
             {
-                tt.Mayo = true;
+                tt.Mayo = false;
             });
 
             Assert.PropertyChanged(tt, "Mayo", () =>
             {
-                tt.Mayo = false;
+                tt.Mayo = true;
             });
+
         }
 
         [Fact]
@@ -384,13 +392,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(tt, "Bacon", () =>
             {
-                tt.Bacon = true;
+                tt.Bacon = false;
             });
 
             Assert.PropertyChanged(tt, "Bacon", () =>
             {
-                tt.Bacon = false;
+                tt.Bacon = true;
             });
+
         }
 
         [Fact]
@@ -400,13 +409,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(tt, "Egg", () =>
             {
-                tt.Egg = true;
+                tt.Egg = false;
             });
 
             Assert.PropertyChanged(tt, "Egg", () =>
             {
-                tt.Egg = false;
+                tt.Egg = true;
             });
+
         }
     }
 }

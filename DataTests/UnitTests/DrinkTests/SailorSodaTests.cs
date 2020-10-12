@@ -159,7 +159,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 
             Assert.PropertyChanged(SS, "Size", () =>
             {
-                SS.Size = Size.Medium;
+                SS.Size = Size.Small;
             });
 
             Assert.PropertyChanged(SS, "Size", () =>
@@ -176,12 +176,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 
             Assert.PropertyChanged(SS, "Ice", () =>
             {
-                SS.Ice = true;
+                SS.Ice = false;
             });
 
             Assert.PropertyChanged(SS, "Ice", () =>
             {
-                SS.Ice = false;
+                SS.Ice = true;
             });
         }
 

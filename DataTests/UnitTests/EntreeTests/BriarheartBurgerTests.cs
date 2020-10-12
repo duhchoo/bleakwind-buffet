@@ -159,13 +159,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(bhb, "Bun", () =>
             {
-                bhb.Bun = true;
+                bhb.Bun = false;
             });
 
             Assert.PropertyChanged(bhb, "Bun", () =>
             {
-                bhb.Bun = false;
+                bhb.Bun = true;
             });
+
         }
 
         [Fact]
@@ -175,12 +176,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(bhb, "Ketchup", () =>
             {
-                bhb.Ketchup = true;
+                bhb.Ketchup = false;
             });
 
             Assert.PropertyChanged(bhb, "Ketchup", () =>
             {
-                bhb.Ketchup = false;
+                bhb.Ketchup = true;
             });
         }
 
@@ -191,13 +192,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(bhb, "Mustard", () =>
             {
-                bhb.Mustard = true;
+                bhb.Mustard = false;
             });
 
             Assert.PropertyChanged(bhb, "Mustard", () =>
             {
-                bhb.Mustard = false;
+                bhb.Mustard = true;
             });
+
+            
         }
 
         [Fact]
@@ -207,13 +210,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 
             Assert.PropertyChanged(bhb, "Pickle", () =>
             {
+                bhb.Pickle = false;
+            });
+            Assert.PropertyChanged(bhb, "Pickle", () =>
+            {
                 bhb.Pickle = true;
             });
 
-            Assert.PropertyChanged(bhb, "Pickle", () =>
-            {
-                bhb.Pickle = false;
-            });
         }
 
         [Fact]
@@ -221,15 +224,18 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             BriarheartBurger bhb = new BriarheartBurger();
 
-            Assert.PropertyChanged(bhb, "Cheese", () =>
-            {
-                bhb.Cheese = true;
-            });
 
             Assert.PropertyChanged(bhb, "Cheese", () =>
             {
                 bhb.Cheese = false;
             });
+
+            Assert.PropertyChanged(bhb, "Cheese", () =>
+            {
+                bhb.Cheese = true;
+            });
+
+
         }
     }
 }

@@ -141,14 +141,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             GardenOrcOmelette goo = new GardenOrcOmelette();
 
-            Assert.PropertyChanged(goo, "Broccoli", () =>
-            {
-                goo.Broccoli = true;
-            });
 
             Assert.PropertyChanged(goo, "Broccoli", () =>
             {
                 goo.Broccoli = false;
+            });
+
+            Assert.PropertyChanged(goo, "Broccoli", () =>
+            {
+                goo.Broccoli = true;
             });
         }
 
@@ -157,14 +158,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             GardenOrcOmelette goo = new GardenOrcOmelette();
 
-            Assert.PropertyChanged(goo, "Mushrooms", () =>
-            {
-                goo.Mushrooms = true;
-            });
 
             Assert.PropertyChanged(goo, "Mushrooms", () =>
             {
                 goo.Mushrooms = false;
+            });
+
+            Assert.PropertyChanged(goo, "Mushrooms", () =>
+            {
+                goo.Mushrooms = true;
             });
         }
 
@@ -173,14 +175,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             GardenOrcOmelette goo = new GardenOrcOmelette();
 
-            Assert.PropertyChanged(goo, "Tomato", () =>
-            {
-                goo.Tomato = true;
-            });
 
             Assert.PropertyChanged(goo, "Tomato", () =>
             {
                 goo.Tomato = false;
+            });
+
+            Assert.PropertyChanged(goo, "Tomato", () =>
+            {
+                goo.Tomato = true;
             });
         }
 
@@ -188,6 +191,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         public void ChangingCheddarNotifiesCheddarProperty()
         {
             GardenOrcOmelette goo = new GardenOrcOmelette();
+
+
+            Assert.PropertyChanged(goo, "Cheddar", () =>
+            {
+                goo.Cheddar = false;
+            });
 
             Assert.PropertyChanged(goo, "Cheddar", () =>
             {

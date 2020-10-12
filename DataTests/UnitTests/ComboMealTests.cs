@@ -18,6 +18,13 @@ namespace BleakwindBuffet.DataTests.UnitTests
 {
     public class ComboMealTests
     {
+        [Fact]
+        public void TesttestTest()
+        {
+            int x = 1;
+            Assert.Equal(1, x);
+        }
+
 
         [Fact]
         public void ShouldBeAbleToSetEntree()
@@ -73,10 +80,10 @@ namespace BleakwindBuffet.DataTests.UnitTests
             Assert.Equal(5.32, comboMeal.Price);
 
             comboMeal.Drink = new AretinoAppleJuice();
-            Assert.Equal(6.74, comboMeal.Price);
+            Assert.Equal(5.94, comboMeal.Price);
 
             comboMeal.Side = new DragonbornWaffleFries();
-            Assert.Equal(7.16, comboMeal.Price);
+            Assert.Equal(6.36, comboMeal.Price);
         }
 
         [Fact]
@@ -100,13 +107,13 @@ namespace BleakwindBuffet.DataTests.UnitTests
             ComboMeal comboMeal = new ComboMeal();
 
             comboMeal.Entree = new BriarheartBurger();
-            Assert.Equal((uint) 743, comboMeal.Calories);
+            Assert.Equal((uint) 742, comboMeal.Calories);
 
             comboMeal.Drink = new AretinoAppleJuice();
-            Assert.Equal((uint) 787, comboMeal.Calories);
+            Assert.Equal((uint) 786, comboMeal.Calories);
 
             comboMeal.Side = new MadOtarGrits();
-            Assert.Equal((uint) 892, comboMeal.Calories);
+            Assert.Equal((uint) 891, comboMeal.Calories);
         }
 
         [Fact]
@@ -117,11 +124,11 @@ namespace BleakwindBuffet.DataTests.UnitTests
             comboMeal.Entree = new BriarheartBurger();
             comboMeal.Drink = new AretinoAppleJuice();
             comboMeal.Drink.Size = Data.Enums.Size.Medium;
-            Assert.Equal((uint) 831, comboMeal.Calories);
+            Assert.Equal((uint) 830, comboMeal.Calories);
 
             comboMeal.Side = new VokunSalad();
             comboMeal.Side.Size = Data.Enums.Size.Large;
-            Assert.Equal(904, comboMeal.Price);
+            Assert.Equal((uint)903, comboMeal.Calories);
         }
 
         [Fact]
