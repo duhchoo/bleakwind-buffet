@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Drinks;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
@@ -21,11 +22,13 @@ namespace PointOfSale
     public partial class SailorSodaCustomization : UserControl
     {
         MenuControl buttons;
+
+        SailorSoda ss = new SailorSoda();
+
         public SailorSodaCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            SailorSoda ss = new SailorSoda();
             ss.Ice = true;
             ss.Size = BleakwindBuffet.Data.Enums.Size.Small;
             ss.Flavor = SodaFlavor.Cherry;
@@ -35,6 +38,10 @@ namespace PointOfSale
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(ss);
+            }
         }
     }
 }

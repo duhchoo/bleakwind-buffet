@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Entrees;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,17 +21,22 @@ namespace PointOfSale
     public partial class ThalmorTripleCustomization : UserControl
     {
         MenuControl buttons;
+        ThalmorTriple tt = new ThalmorTriple();
+
         public ThalmorTripleCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            ThalmorTriple tt = new ThalmorTriple();
             buttons.DataContext = tt;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(tt);
+            }
         }
     }
 }

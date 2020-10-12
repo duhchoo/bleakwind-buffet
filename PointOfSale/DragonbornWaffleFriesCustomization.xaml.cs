@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Sides;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,17 +22,22 @@ namespace PointOfSale
     public partial class DragonbornWaffleFriesCustomization : UserControl
     {
         MenuControl buttons;
+        DragonbornWaffleFries dbwf = new DragonbornWaffleFries();
+
         public DragonbornWaffleFriesCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            DragonbornWaffleFries dbwf = new DragonbornWaffleFries();
             buttons.DataContext = dbwf;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(dbwf);
+            }
         }
     }
 }

@@ -336,6 +336,7 @@ namespace PointOfSale
         private void add_Click(object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            
         }
     }
 }

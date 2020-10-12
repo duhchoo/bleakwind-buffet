@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Sides;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +21,7 @@ namespace PointOfSale
     public partial class VokunSaladCustomization : UserControl
     {
         MenuControl buttons;
+        VokunSalad vs = new VokunSalad();
         public VokunSaladCustomization(MenuControl butt)
         {
             InitializeComponent();
@@ -31,6 +33,10 @@ namespace PointOfSale
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(vs);
+            }
         }
     }
 }

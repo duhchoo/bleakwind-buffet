@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Sides;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,17 +21,22 @@ namespace PointOfSale
     public partial class MadOtarGritsCustomization : UserControl
     {
         MenuControl buttons;
+        MadOtarGrits mog = new MadOtarGrits();
+
         public MadOtarGritsCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            MadOtarGrits mog = new MadOtarGrits();
             buttons.DataContext = mog;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(mog);
+            }
         }
     }
 }

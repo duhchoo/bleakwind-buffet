@@ -22,11 +22,12 @@ namespace PointOfSale
     {
         MenuControl buttons;
 
+        AretinoAppleJuice aj = new AretinoAppleJuice();
+
         public AretinoAppleJuiceCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            AretinoAppleJuice aj = new AretinoAppleJuice();
             aj.Size = BleakwindBuffet.Data.Enums.Size.Small;
             buttons.DataContext = aj;
         }
@@ -34,6 +35,10 @@ namespace PointOfSale
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(aj);
+            }
         }
     }
 }

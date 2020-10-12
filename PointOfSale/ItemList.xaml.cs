@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BleakwindBuffet.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -23,6 +24,16 @@ namespace PointOfSale
         public ItemList()
         {
             InitializeComponent();
+        }
+
+        private void finishButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new Order();
         }
     }
 }

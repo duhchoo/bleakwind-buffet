@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Drinks;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,11 +21,12 @@ namespace PointOfSale
     public partial class CandlehearthCoffeeCustomization : UserControl
     {
         MenuControl buttons;
+        CandlehearthCoffee chc = new CandlehearthCoffee();
+
         public CandlehearthCoffeeCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            CandlehearthCoffee chc = new CandlehearthCoffee();
             chc.Ice = false;
             chc.Size = BleakwindBuffet.Data.Enums.Size.Small;
             chc.RoomForCream = false;
@@ -35,6 +37,10 @@ namespace PointOfSale
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(chc);
+            }
         }
     }
 }

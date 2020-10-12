@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Entrees;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,17 +21,22 @@ namespace PointOfSale
     public partial class SmokehouseSkeletonCustomization : UserControl
     {
         MenuControl buttons;
+        SmokehouseSkeleton shs = new SmokehouseSkeleton();
+
         public SmokehouseSkeletonCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            SmokehouseSkeleton shs = new SmokehouseSkeleton();
             buttons.DataContext = shs;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(shs);
+            }
         }
     }
 }

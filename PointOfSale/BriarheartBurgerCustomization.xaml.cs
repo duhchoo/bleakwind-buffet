@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Entrees;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,17 +21,22 @@ namespace PointOfSale
     public partial class BriarheartBurgerCustomization : UserControl
     {
         MenuControl buttons;
+        BriarheartBurger bhb = new BriarheartBurger();
+
         public BriarheartBurgerCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            BriarheartBurger bhb = new BriarheartBurger();
             buttons.DataContext = bhb;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(bhb);
+            }
         }
     }
 }

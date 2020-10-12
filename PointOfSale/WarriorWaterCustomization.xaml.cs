@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Drinks;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,12 +21,12 @@ namespace PointOfSale
     public partial class WarriorWaterCustomization : UserControl
     {
         MenuControl buttons;
+        WarriorWater ww = new WarriorWater();
 
         public WarriorWaterCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            WarriorWater ww = new WarriorWater();
             ww.Ice = true;
             ww.Lemon = false;
             ww.Size = BleakwindBuffet.Data.Enums.Size.Small;
@@ -35,6 +36,10 @@ namespace PointOfSale
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(ww);
+            }
         }
     }
 }

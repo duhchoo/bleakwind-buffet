@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Entrees;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,17 +21,22 @@ namespace PointOfSale
     public partial class ThugsTBoneCustomization : UserControl
     {
         MenuControl buttons;
+        ThugsTBone ttb = new ThugsTBone();
+
         public ThugsTBoneCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            ThugsTBone ttb = new ThugsTBone();
             buttons.DataContext = ttb;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
             buttons.Swap("");
+            if (DataContext is Order order)
+            {
+                order.Add(ttb);
+            }
         }
     }
 }

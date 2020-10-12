@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Sides;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,17 +21,22 @@ namespace PointOfSale
     public partial class FriedMiraakCustomization : UserControl
     {
         MenuControl buttons;
+        FriedMiraak fm = new FriedMiraak();
+
         public FriedMiraakCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            FriedMiraak fm = new FriedMiraak();
             buttons.DataContext = fm;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
-            buttons.Swap("");
+            buttons.Swap(""); 
+            if (DataContext is Order order)
+            {
+                order.Add(fm);
+            }
         }
     }
 }

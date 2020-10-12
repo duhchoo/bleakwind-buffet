@@ -1,0 +1,66 @@
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
+using BleakwindBuffet.Data.Entrees;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Text;
+using Xunit;
+
+namespace BleakwindBuffet.DataTests.UnitTests
+{
+    public class OrderTests
+    {
+        [Fact]
+        public void CanAddIOrderItem()
+        {
+            Order order = new Order();
+            order.Add(new BriarheartBurger());
+            Assert.Contains("Briarheart Burger", order[0].ToString());
+
+            order.Add(new AretinoAppleJuice());
+            Assert.Contains("Aretino Apple Juice", order[1].ToString());
+        }
+
+        [Fact]
+        public void CanRemoveIOrderItem()
+        {
+            Order order = new Order();
+            BriarheartBurger bhb = new BriarheartBurger();
+            order.Add(bhb);
+            order.Remove(bhb);
+            Assert.Empty(order);
+        }
+
+        [Fact]
+        public void ShouldBeObservableCollection()
+        {
+            Order order = new Order();
+            Assert.IsAssignableFrom<ObservableCollection<IOrderItem>>(order);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToNotifyPropertyChanged()
+        {
+            Order order = new Order();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(order);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToICollection()
+        {
+            Order order = new Order();
+            Assert.IsAssignableFrom<ICollection>(order);
+        }
+
+        [Fact]
+        public void ShouldBeAssignableToINotifyCollectionChanged()
+        {
+            Order order = new Order();
+            Assert.IsAssignableFrom<INotifyCollectionChanged>(order);
+        }
+    }
+}

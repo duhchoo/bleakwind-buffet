@@ -41,13 +41,10 @@
         </Grid.RowDefinitions>
 
         <!--The room for the list of ordered items-->
-        <Border Grid.Column="7" Grid.RowSpan="15">
+        <Border Grid.Column="7" Grid.RowSpan="17" x:Name="OrderedItemList">
             <local:ItemList/>
         </Border>
-        <!--The room for the finish and cancel buttons-->
-        <Border Grid.Column="7" Grid.Row="16">
-            <local:FinishDelete/>
-        </Border>
+        
 
         <Border Grid.ColumnSpan="6" Grid.RowSpan="17">
             <local:MenuControl/>

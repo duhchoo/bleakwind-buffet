@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Drinks;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,12 +22,13 @@ namespace PointOfSale
     {
 
         MenuControl buttons;
+        MarkarthMilk mm = new MarkarthMilk();
+
 
         public MarkarthMilkCustomization(MenuControl butt)
         {
             InitializeComponent();
             buttons = butt;
-            MarkarthMilk mm = new MarkarthMilk();
             mm.Ice = false;
             mm.Size = BleakwindBuffet.Data.Enums.Size.Small;
             buttons.DataContext = mm;
@@ -34,7 +36,10 @@ namespace PointOfSale
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
-            buttons.Swap("");
+            buttons.Swap(""); if (DataContext is Order order)
+            {
+                order.Add(mm);
+            }
         }
     }
 }
