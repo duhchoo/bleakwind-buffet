@@ -22,16 +22,17 @@ namespace BleakwindBuffet.DataTests.UnitTests
             Assert.Equal(order.Calories, (uint) 44);
         }
 
-        //[Fact]
-        //public void CanAddIOrderItem()
-        //{
-        //    Order order = new Order();
-        //    order.Add(new BriarheartBurger());
-        //    Assert.Contains("Briarheart Burger", order[0].ToString());
+        [Fact]
+        public void CanAddIOrderItem()
+        {
+            Order order = new Order();
+            BriarheartBurger bhb = new BriarheartBurger();
+            order.Add(bhb);
+            Assert.Contains(bhb, order.orderItemsList);
 
-        //    order.Add(new AretinoAppleJuice());
-        //    Assert.Contains("Aretino Apple Juice", order[1].ToString());
-        //}
+            order.Add(new AretinoAppleJuice());
+            Assert.Contains(bhb, order.orderItemsList);
+        }
 
         [Fact]
         public void CanRemoveIOrderItem()
@@ -41,13 +42,6 @@ namespace BleakwindBuffet.DataTests.UnitTests
             order.Add(bhb);
             order.Remove(bhb);
             Assert.Empty(order);
-        }
-
-        [Fact]
-        public void ShouldBeObservableCollection()
-        {
-            Order order = new Order();
-            Assert.IsAssignableFrom<ObservableCollection<IOrderItem>>(order);
         }
 
         [Fact]
