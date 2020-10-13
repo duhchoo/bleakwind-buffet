@@ -10,7 +10,7 @@ using System.Xml.Schema;
 
 namespace BleakwindBuffet.Data
 {
-    public class Order : ObservableCollection<IOrderItem>, ICollection, INotifyCollectionChanged, INotifyPropertyChanged
+    public class Order : ICollection, INotifyCollectionChanged, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -19,7 +19,18 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// The total amount of calories
         /// </summary>
-        public uint Calories { get; }
+        public uint Calories 
+        { 
+            get
+            {
+                uint number = 0;
+                foreach (IOrderItem orderitem in this)
+                {
+                    number += orderitem.Calories;
+                }
+                return number;
+            }
+        }
 
         /// <summary>
         /// The next order number
@@ -29,7 +40,7 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// The number of the order
         /// </summary>
-        public int Number { get; set; }
+        public int Number { get; }
 
         /// <summary>
         /// The tax rate of the order
@@ -39,7 +50,18 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// The subtotal of the order
         /// </summary>
-        public double Subtotal { get; }
+        public double Subtotal 
+        {
+            get
+            {
+                double number = 0;
+                foreach (IOrderItem orderitem in this)
+                {
+                    number += orderitem.Price;
+                }
+                return number;
+            }
+        }
 
         /// <summary>
         /// Represents the subtotal
@@ -50,6 +72,14 @@ namespace BleakwindBuffet.Data
         /// Total of the price.
         /// </summary>
         public double Total => Subtotal + Tax;
+
+        public int Count => orderItemsList.Count;
+
+        public bool IsSynchronized => throw new NotImplementedException();
+
+        public object SyncRoot => throw new NotImplementedException();
+
+
 
         /// <summary>
         /// Order constructor
@@ -63,16 +93,18 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// The list holding all the IOrderItems
         /// </summary>
-        private Collection<IOrderItem> orderItemsList = new Collection<IOrderItem>();
+        public Collection<IOrderItem> orderItemsList = new Collection<IOrderItem>();
 
         /// <summary>
         /// Adds an IOrderItem to the list of ordered items.
         /// </summary>
         /// <param name="orderItem"></param>
-        public void AddTo(IOrderItem orderItem)
+        public void Add(IOrderItem orderItem)
         {
             orderItemsList.Add(orderItem);
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
+            orderItem.PropertyChanged += ItemChangedListener;
+
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, orderItem));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
@@ -83,15 +115,43 @@ namespace BleakwindBuffet.Data
         /// Removes an IOrderItem to the list of ordered items.
         /// </summary>
         /// <param name="orderItem"></param>
-        public void RemoveFrom(IOrderItem orderItem)
+        public void Remove(IOrderItem orderItem)
         {
+            int index = orderItemsList.IndexOf(orderItem);
+
             orderItemsList.Remove(orderItem);
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
+            orderItem.PropertyChanged -= ItemChangedListener;
+
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, orderItem, orderItemsList.IndexOf(orderItem)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
         }
 
+        void ItemChangedListener(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Calories")
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+            }
+            if (e.PropertyName == "Subtotal")
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
+            }
+
+        }
+
+        public void CopyTo(Array array, int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return orderItemsList.GetEnumerator();
+        }
     }
 }

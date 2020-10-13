@@ -15,15 +15,23 @@ namespace BleakwindBuffet.DataTests.UnitTests
     public class OrderTests
     {
         [Fact]
-        public void CanAddIOrderItem()
+        public void ChangedCalorieCountWhenAddingJuice()
         {
             Order order = new Order();
-            order.Add(new BriarheartBurger());
-            Assert.Contains("Briarheart Burger", order[0].ToString());
-
             order.Add(new AretinoAppleJuice());
-            Assert.Contains("Aretino Apple Juice", order[1].ToString());
+            Assert.Equal(order.Calories, (uint) 44);
         }
+
+        //[Fact]
+        //public void CanAddIOrderItem()
+        //{
+        //    Order order = new Order();
+        //    order.Add(new BriarheartBurger());
+        //    Assert.Contains("Briarheart Burger", order[0].ToString());
+
+        //    order.Add(new AretinoAppleJuice());
+        //    Assert.Contains("Aretino Apple Juice", order[1].ToString());
+        //}
 
         [Fact]
         public void CanRemoveIOrderItem()
