@@ -27,12 +27,24 @@
         </StackPanel>
 
 
-        <ListView Grid.ColumnSpan="3" Grid.Row="1" x:Name="listView" ItemsSource="{Binding}">
+        <ListView Grid.ColumnSpan="3" Grid.Row="1" x:Name="listView" ItemsSource="{Binding Path=Items}" IsSynchronizedWithCurrentItem="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}"/>
+                    <!--<StackPanel Orientation="Horizontal">
+                        <TextBlock Name=""/>
                         <TextBlock Text="{Binding Path=Price}"/>
+                    </StackPanel>-->
+
+                    <StackPanel>
+                        <TextBlock Name="block">
+                            <Run Text="{Binding Mode=OneWay}"/>
+                            <Run Text=" $"/>
+                            <Run Text="{Binding Path=Price, Mode=OneTime}"/>
+                        </TextBlock>
+                        <ListView Name="specialInstructions" ItemsSource="{Binding Path=SpecialInstructions}"/>
+                        <Button Name="RemoveButton" Click="RemoveItem_Click">
+                            Remove
+                        </Button>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -40,7 +52,7 @@
             
             
         </ListView>
-        
+
 
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
@@ -56,27 +68,5 @@
                 <TextBlock FontSize="10" Text="{Binding Path=Total}"/>
             </StackPanel>
         </StackPanel>
-
-        <Border Grid.Column="0" Grid.Row="3" BorderBrush="Black">
-            <Button Name="finishButton" Background="LightGray" FontSize="13" FontFamily="inconsolata" Click="finishButton_Click">
-                Finish
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </Border>
-
-        <Border Grid.Column="2" Grid.Row="3" BorderBrush="Black">
-            <Button Name="cancelButton" Background="LightGray" FontSize="13" FontFamily="inconsolata" Click="cancelButton_Click">
-                Cancel
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </Border>
     </Grid>
 </UserControl>

@@ -36,14 +36,14 @@
             <Label>
                 Choose a Size
             </Label>
-            <ComboBox>
-                <ComboBoxItem Name="Small" IsSelected="{Binding Path=Size}">
+            <ComboBox SelectionChanged="Size">
+                <ComboBoxItem Name="Small">
                     Small
                 </ComboBoxItem>
-                <ComboBoxItem Name="Medium" IsSelected="{Binding Path=Size}">
+                <ComboBoxItem Name="Medium">
                     Medium
                 </ComboBoxItem>
-                <ComboBoxItem Name="Large" IsSelected="{Binding Path=Size}">
+                <ComboBoxItem Name="Large">
                     Large
                 </ComboBoxItem>
             </ComboBox>

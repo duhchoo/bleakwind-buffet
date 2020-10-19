@@ -27,16 +27,16 @@ namespace PointOfSale
             InitializeComponent();
             buttons = butt;
             VokunSalad vs = new VokunSalad();
-            buttons.DataContext = vs;
+            customList.DataContext = vs;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
-            buttons.Swap("");
             if (DataContext is Order order)
             {
                 order.Add(vs);
             }
+            buttons.Swap("");
         }
     }
 }

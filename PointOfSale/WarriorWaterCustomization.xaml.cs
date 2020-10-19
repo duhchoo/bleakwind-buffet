@@ -27,19 +27,17 @@ namespace PointOfSale
         {
             InitializeComponent();
             buttons = butt;
-            ww.Ice = true;
-            ww.Lemon = false;
-            ww.Size = BleakwindBuffet.Data.Enums.Size.Small;
-            buttons.DataContext = ww;
+            customList.DataContext = ww;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
-            buttons.Swap("");
+            
             if (DataContext is Order order)
             {
                 order.Add(ww);
             }
+            buttons.Swap("");
         }
     }
 }

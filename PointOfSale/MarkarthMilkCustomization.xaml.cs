@@ -31,15 +31,16 @@ namespace PointOfSale
             buttons = butt;
             mm.Ice = false;
             mm.Size = BleakwindBuffet.Data.Enums.Size.Small;
-            buttons.DataContext = mm;
+            customList.DataContext = mm;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
-            buttons.Swap(""); if (DataContext is Order order)
+            if (DataContext is Order order)
             {
                 order.Add(mm);
             }
+            buttons.Swap("");
         }
     }
 }

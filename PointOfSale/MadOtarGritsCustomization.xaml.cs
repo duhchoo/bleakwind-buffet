@@ -27,16 +27,16 @@ namespace PointOfSale
         {
             InitializeComponent();
             buttons = butt;
-            buttons.DataContext = mog;
+            customList.DataContext = mog;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
-            buttons.Swap("");
             if (DataContext is Order order)
             {
                 order.Add(mog);
             }
+            buttons.Swap("");
         }
     }
 }

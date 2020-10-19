@@ -13,8 +13,12 @@ namespace BleakwindBuffet.Data
     public class Order : ICollection, INotifyCollectionChanged, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
         public event NotifyCollectionChangedEventHandler CollectionChanged;
+
+        /// <summary>
+        /// The list holding all the IOrderItems
+        /// </summary>
+        public Collection<IOrderItem> orderItemsList = new Collection<IOrderItem>();
 
         /// <summary>
         /// The total amount of calories
@@ -59,19 +63,34 @@ namespace BleakwindBuffet.Data
                 {
                     number += orderitem.Price;
                 }
-                return number;
+                return Convert.ToDouble(String.Format("{0:000.00}", number));
             }
         }
 
         /// <summary>
         /// Represents the subtotal
         /// </summary>
-        public double Tax => Subtotal * SalesTaxRate;
+        public double Tax
+        {
+            get
+            {
+                double tax = Subtotal * SalesTaxRate;
+                return Convert.ToDouble(String.Format("{0:000.00}", tax));
+            }
+        }
 
         /// <summary>
         /// Total of the price.
         /// </summary>
-        public double Total => Subtotal + Tax;
+        public double Total
+        {
+            get
+            {
+                double total = Subtotal + Tax;
+                return Convert.ToDouble(String.Format("{0:000.00}", total));
+            }
+        }
+
 
         public int Count => orderItemsList.Count;
 
@@ -90,10 +109,7 @@ namespace BleakwindBuffet.Data
             nextOrderNumber++;
         }
 
-        /// <summary>
-        /// The list holding all the IOrderItems
-        /// </summary>
-        public Collection<IOrderItem> orderItemsList = new Collection<IOrderItem>();
+        public IEnumerable<IOrderItem> Items => orderItemsList.ToArray();
 
         /// <summary>
         /// Adds an IOrderItem to the list of ordered items.
@@ -105,6 +121,7 @@ namespace BleakwindBuffet.Data
             orderItem.PropertyChanged += ItemChangedListener;
 
             CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, orderItem));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
@@ -122,7 +139,8 @@ namespace BleakwindBuffet.Data
             orderItemsList.Remove(orderItem);
             orderItem.PropertyChanged -= ItemChangedListener;
 
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, orderItem, orderItemsList.IndexOf(orderItem)));
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, orderItem, index));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
@@ -135,7 +153,7 @@ namespace BleakwindBuffet.Data
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
             }
-            if (e.PropertyName == "Subtotal")
+            if (e.PropertyName == "Price")
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
@@ -149,9 +167,10 @@ namespace BleakwindBuffet.Data
             throw new NotImplementedException();
         }
 
-        public IEnumerator GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return orderItemsList.GetEnumerator();
         }
+
     }
 }

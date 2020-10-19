@@ -21,12 +21,26 @@ namespace PointOfSale
     /// </summary>
     public partial class MainWindow : Window
     {
+        Order mainOrder;
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new Order();
+            mainOrder = new Order();
+            DataContext = mainOrder;
+            BigWindow.Child = new MenuControl();
         }
 
+        private void finishButton_Click(object sender, RoutedEventArgs e)
+        {
+            PurchaseWindow.Child = new PaymentSelectionControl(PurchaseWindow, mainOrder);
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainOrder = new Order();
+            DataContext = mainOrder;
+            PurchaseWindow.Child = null;
+        }
 
     }
 }

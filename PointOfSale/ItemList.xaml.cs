@@ -26,14 +26,14 @@ namespace PointOfSale
             InitializeComponent();
         }
 
-        private void finishButton_Click(object sender, RoutedEventArgs e)
-        {
+        
 
-        }
-
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        private void RemoveItem_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new Order();
+            if (DataContext is Order order && sender is Button button && button.DataContext is IOrderItem orderItem)
+            {
+                order.Remove(orderItem);
+            }
         }
     }
 }

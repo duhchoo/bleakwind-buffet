@@ -32,16 +32,17 @@ namespace PointOfSale
             ss.Ice = true;
             ss.Size = BleakwindBuffet.Data.Enums.Size.Small;
             ss.Flavor = SodaFlavor.Cherry;
-            buttons.DataContext = ss;
+            customList.DataContext = ss;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
-            buttons.Swap("");
+            
             if (DataContext is Order order)
             {
                 order.Add(ss);
             }
+            buttons.Swap("");
         }
     }
 }

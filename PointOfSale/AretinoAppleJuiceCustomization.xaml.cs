@@ -28,16 +28,28 @@ namespace PointOfSale
         {
             InitializeComponent();
             buttons = butt;
-            aj.Size = BleakwindBuffet.Data.Enums.Size.Small;
-            buttons.DataContext = aj;
+            customList.DataContext = aj;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
-            buttons.Swap("");
             if (DataContext is Order order)
             {
                 order.Add(aj);
+            }
+            buttons.Swap("");
+        }
+
+        private void Size(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataContext is AretinoAppleJuice aj)
+            {
+                foreach (ComboBoxItem size in e.AddedItems)
+                {
+                    if (size.Name == "Small") aj.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                    if (size.Name == "Medium") aj.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                    if (size.Name == "Large") aj.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                }
             }
         }
     }

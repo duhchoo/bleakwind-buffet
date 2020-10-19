@@ -31,16 +31,17 @@ namespace PointOfSale
             chc.Size = BleakwindBuffet.Data.Enums.Size.Small;
             chc.RoomForCream = false;
             chc.Decaf = false;
-            buttons.DataContext = chc;
+            customList.DataContext = chc;
         }
 
         public void add_Click(Object sender, RoutedEventArgs e)
         {
-            buttons.Swap("");
+            
             if (DataContext is Order order)
             {
                 order.Add(chc);
             }
+            buttons.Swap("");
         }
     }
 }

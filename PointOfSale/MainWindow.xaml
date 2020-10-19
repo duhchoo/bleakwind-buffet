@@ -16,7 +16,8 @@
             <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition Width="2.3*"/>
             <ColumnDefinition Width="0.1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
         <!--Defines the rows-->
@@ -38,16 +39,42 @@
             <RowDefinition/>
             <RowDefinition Height="0.3*"/>
             <RowDefinition/>
+            <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
 
         <!--The room for the list of ordered items-->
-        <Border Grid.Column="7" Grid.RowSpan="17" x:Name="OrderedItemList">
+        <Border Grid.Column="7" Grid.RowSpan="17" Grid.ColumnSpan="2" x:Name="OrderedItemList">
             <local:ItemList/>
         </Border>
         
 
-        <Border Grid.ColumnSpan="6" Grid.RowSpan="17">
-            <local:MenuControl/>
+        <Border Name="BigWindow" Grid.ColumnSpan="6" Grid.RowSpan="17">
+            <!--<local:MenuControl/>-->
+        </Border>
+
+        <Border Name="PurchaseWindow" Grid.ColumnSpan="6" Grid.RowSpan="17">
+        </Border>
+
+        <Border Grid.Column="7" Grid.Row="16" BorderBrush="Black">
+            <Button Name="finishButton" Background="LightGray" FontSize="13" FontFamily="inconsolata" Click="finishButton_Click">
+                Purchase
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Border>
+
+        <Border Grid.Column="8" Grid.Row="16" BorderBrush="Black">
+            <Button Name="cancelButton" Background="LightGray" FontSize="13" FontFamily="inconsolata" Click="cancelButton_Click">
+                Cancel
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Border>
 
 

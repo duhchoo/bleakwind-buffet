@@ -29,11 +29,13 @@ namespace BleakwindBuffet.Data
             get => entree;
             set
             {
+                if (entree != null) entree.PropertyChanged -= PropertyChangedListener;
                 entree = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Entree"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                entree.PropertyChanged += PropertyChangedListener;
             }
         }
 
@@ -46,11 +48,14 @@ namespace BleakwindBuffet.Data
             get => drink;
             set
             {
+                if (drink != null) entree.PropertyChanged -= PropertyChangedListener;
                 drink = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Drink"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                drink.PropertyChanged += PropertyChangedListener;
             }
         }
 
@@ -63,11 +68,14 @@ namespace BleakwindBuffet.Data
             get => side;
             set
             {
+                if (side != null) entree.PropertyChanged -= PropertyChangedListener;
                 side = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Side"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                side.PropertyChanged += PropertyChangedListener;
             }
         }
 
@@ -91,7 +99,7 @@ namespace BleakwindBuffet.Data
                 {
                     price += Side.Price;
                 }
-                return price -1;
+                return price - 1;
             }
         }
 
@@ -148,6 +156,18 @@ namespace BleakwindBuffet.Data
                     list.Add(Side.ToString());
                 }
                 return list;
+            }
+        }
+
+        void PropertyChangedListener(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Price")
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+            }
+            if (e.PropertyName == "Calories")
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
             }
         }
     }
