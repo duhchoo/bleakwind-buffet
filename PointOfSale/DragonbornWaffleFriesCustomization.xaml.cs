@@ -39,5 +39,25 @@ namespace PointOfSale
             }
             buttons.Swap("");
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (customList.DataContext is DragonbornWaffleFries dbwf)
+            {
+                if (Box.SelectedItem == Small)
+                {
+                    dbwf.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                }
+                if (Box.SelectedItem == Medium)
+                {
+                    dbwf.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                }
+                if (Box.SelectedItem == Large)
+                {
+                    dbwf.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                }
+
+            }
+        }
     }
 }

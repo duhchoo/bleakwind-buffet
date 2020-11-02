@@ -36,7 +36,7 @@
             <Label>
                 Choose a Size
             </Label>
-            <ComboBox SelectionChanged="Size">
+            <ComboBox Name="Box" SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBoxItem Name="Small">
                     Small
                 </ComboBoxItem>

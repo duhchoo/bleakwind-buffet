@@ -38,5 +38,25 @@ namespace PointOfSale
             }
             buttons.Swap("");
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (customList.DataContext is FriedMiraak fm)
+            {
+                if (Box.SelectedItem == Small)
+                {
+                    fm.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                }
+                if (Box.SelectedItem == Medium)
+                {
+                    fm.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                }
+                if (Box.SelectedItem == Large)
+                {
+                    fm.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                }
+
+            }
+        }
     }
 }

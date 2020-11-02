@@ -52,5 +52,25 @@ namespace PointOfSale
                 }
             }
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (customList.DataContext is AretinoAppleJuice aaj)
+            {
+                if (Box.SelectedItem == Small)
+                {
+                    aaj.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                }
+                if (Box.SelectedItem == Medium)
+                {
+                    aaj.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                }
+                if (Box.SelectedItem == Large)
+                {
+                    aaj.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                }
+
+            }
+        }
     }
 }

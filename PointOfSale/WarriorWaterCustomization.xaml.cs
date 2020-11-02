@@ -39,5 +39,25 @@ namespace PointOfSale
             }
             buttons.Swap("");
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (customList.DataContext is WarriorWater ww)
+            {
+                if (Box.SelectedItem == Small)
+                {
+                    ww.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                }
+                if (Box.SelectedItem == Medium)
+                {
+                    ww.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                }
+                if (Box.SelectedItem == Large)
+                {
+                    ww.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                }
+
+            }
+        }
     }
 }

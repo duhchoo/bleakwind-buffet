@@ -42,5 +42,25 @@ namespace PointOfSale
             }
             buttons.Swap("");
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (customList.DataContext is MarkarthMilk mm)
+            {
+                if (Box.SelectedItem == Small)
+                {
+                    mm.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                }
+                if (Box.SelectedItem == Medium)
+                {
+                    mm.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                }
+                if (Box.SelectedItem == Large)
+                {
+                    mm.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                }
+
+            }
+        }
     }
 }

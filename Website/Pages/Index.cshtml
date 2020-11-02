@@ -1,0 +1,77 @@
+﻿@page
+@model IndexModel
+
+@using BleakwindBuffet.Data;
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Bleakwind Buffet</h1>
+
+        <p>
+            We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim.
+            Shake the blood off your sword and sake your thirst with one of our old-fashioned sailor sodas.
+            Hack into a Smokehouse Skeleton with your dagger. Or vanquish the mighty Thalmor Triple Burger!
+            You’ve had a hard adventure and earned your loot, so spend it with us!
+        </p>
+
+
+        <h2>Entrees</h2>
+
+        @foreach (IOrderItem entree in Menu.Entrees())
+        {
+            <div>
+                @("$" + entree.Price)
+                @("   -   " + entree.ToString())
+                @("   -   " + entree.Calories + " Calories")
+            </div>
+        }
+        <p> </p>
+
+        <h2>Sides</h2>
+
+        @foreach (IOrderItem side in Menu.Sides())
+        {
+            <div>
+                @("$" + side.Price)
+                @("   -   " + side.ToString())
+                @("   -   " + side.Calories + " Calories")
+            </div>
+        }
+        <p> </p>
+
+        <h2>Drinks</h2>
+
+        @foreach (IOrderItem drink in Menu.Drinks())
+        {
+            <div>
+                @("$" + drink.Price)
+                @("   -   " + drink.ToString())
+                @("   -   " + drink.Calories + " Calories")
+            </div>
+
+        }
+        <p> </p>
+
+
+        <h2>Meal Combos</h2>
+        <p>
+            You can choose to add any entree, side, and drink as a combo to get a $1 discount off your meal!
+        </p>
+        <p> </p>
+
+        <h2>Flavors for the Sailor Soda</h2>
+
+        <div>Blackberry</div>
+        <div>Cherry</div>
+        <div>Grapefruit</div>
+        <div>Lemon</div>
+        <div>Peach</div>
+        <div>Watermelon</div>
+        <p> </p>
+        <p> </p>
+
+        <p>Click <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLaWLPB2Z4vf9o-3J18g6SbBeSAvDvtrwx&index=4"> HERE </a>to view the last LIVING dinosaur! Not click-bait!</p>
+    </div>

@@ -44,5 +44,58 @@ namespace PointOfSale
             }
             buttons.Swap("");
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (customList.DataContext is SailorSoda ss)
+            {
+                if (Box.SelectedItem == Small)
+                {
+                    ss.Size = BleakwindBuffet.Data.Enums.Size.Small;
+                }
+                if (Box.SelectedItem == Medium)
+                {
+                    ss.Size = BleakwindBuffet.Data.Enums.Size.Medium;
+                }
+                if (Box.SelectedItem == Large)
+                {
+                    ss.Size = BleakwindBuffet.Data.Enums.Size.Large;
+                }
+
+            }
+        }
+
+        private void FlavorBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (customList.DataContext is SailorSoda ss)
+            {
+                if (FlavorBox.SelectedItem == Cherry)
+                {
+                    ss.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Cherry;
+                }
+                if (FlavorBox.SelectedItem == Lemon)
+                {
+                    ss.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Lemon;
+                }
+                if (FlavorBox.SelectedItem == Blackberry)
+                {
+                    ss.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Blackberry;
+                }
+                if (FlavorBox.SelectedItem == Watermelon)
+                {
+                    ss.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Watermelon;
+                }
+                if (FlavorBox.SelectedItem == Grapefruit)
+                {
+                    ss.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Grapefruit;
+                }
+                if (FlavorBox.SelectedItem == Peach)
+                {
+                    ss.Flavor = BleakwindBuffet.Data.Enums.SodaFlavor.Peach;
+                }
+
+
+            }
+        }
     }
 }
