@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Author: Hutch Turner
+ * Menu.cs
+ * Purpose: Collects certain items from different data to create lists for searching on the website.
+ * 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using BleakwindBuffet.Data.Entrees;
@@ -6,6 +12,7 @@ using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Sides;
 using BleakwindBuffet.Data.Enums;
 using System.Xml.Serialization;
+using System.Linq;
 
 namespace BleakwindBuffet.Data
 {
@@ -190,6 +197,143 @@ namespace BleakwindBuffet.Data
             return menu;
         }
 
+        /// <summary>
+        /// Filters the data by categories selected.
+        /// </summary>
+        /// <param name="OrderItems"> All the items being filtered. </param>
+        /// <param name="categories"> The filters </param>
+        /// <returns> A filtered OrderItems </returns>
+        public static IEnumerable<IOrderItem> FilterByCategory(IEnumerable<IOrderItem> OrderItems, IEnumerable<string> categories)
+        {
+            if (categories == null || categories.Count() == 0)
+            {
+                return OrderItems;
+            }
+
+            List<IOrderItem> results = new List<IOrderItem>();
+            foreach (IOrderItem item in OrderItems)
+            {
+                if (categories.Contains("Entree") && item is Entree)
+                {
+                    results.Add(item);
+                }
+                if (categories.Contains("Side") && item is Side)
+                {
+                    results.Add(item);
+                }
+                if (categories.Contains("Drink") && item is Drink)
+                {
+                    results.Add(item);
+                }
+            }
+            return results;
+        }
+
+        /// <summary>
+        /// Searched through all food items.
+        /// </summary>
+        /// <param name="OrderItems"> All the items being filtered. </param>
+        /// <param name="SearchTerms"> The term being looked-up</param>
+        /// <returns> the food items with matching data. </returns>
+        public static IEnumerable<IOrderItem> Search(IEnumerable<IOrderItem> OrderItems, string SearchTerms)
+        {
+            List<IOrderItem> results = new List<IOrderItem>();
+
+            if (SearchTerms == null)
+            {
+                return OrderItems;
+            }
+            foreach (IOrderItem item in OrderItems)
+            {
+                if (item.ToString().Contains(SearchTerms))
+                {
+                    results.Add(item);
+                }
+            }
+
+            return results;
+        }
+
+        /// <summary>
+        /// Filters the items by a price range.
+        /// </summary>
+        /// <param name="OrderItems"> the items being filtered. </param>
+        /// <param name="min"> the min filter </param>
+        /// <param name="max"> the max filter </param>
+        /// <returns> all items inside that range.</returns>
+        public static IEnumerable<IOrderItem> FilterByPrice(IEnumerable<IOrderItem> OrderItems, double? min, double? max)
+        {
+            if (min == 0 && max == 0) return OrderItems;
+
+            var results = new List<IOrderItem>();
+
+            if (min == 0)
+            {
+                foreach (IOrderItem item in OrderItems)
+                {
+                    if (item.Price <= max) results.Add(item);
+                }
+                return results;
+            }
+
+            if (max == 0)
+            {
+                foreach (IOrderItem item in OrderItems)
+                {
+                    if (item.Price >= min) results.Add(item);
+                }
+                return results;
+            }
+
+            foreach (IOrderItem item in OrderItems)
+            {
+                if (item.Price >= min && item.Price <= max)
+                {
+                    results.Add(item);
+                }
+            }
+            return results;
+        }
+
+        /// <summary>
+        /// Filters the items by a calorie range.
+        /// </summary>
+        /// <param name="OrderItems"> the items being filtered. </param>
+        /// <param name="min"> the min filter </param>
+        /// <param name="max"> the max filter </param>
+        /// <returns> all items inside that range.</returns>
+        public static IEnumerable<IOrderItem> FilterByCalories(IEnumerable<IOrderItem> OrderItems, double? min, double? max)
+        {
+            if (min == 0 && max == 0) return OrderItems;
+
+            var results = new List<IOrderItem>();
+            if (min == 0)
+            {
+                foreach (IOrderItem item in OrderItems)
+                {
+                    if (item.Calories <= max) results.Add(item);
+                }
+                return results;
+            }
+
+            if (max == 0)
+            {
+                foreach (IOrderItem item in OrderItems)
+                {
+                    if (item.Calories >= min) results.Add(item);
+                }
+                return results;
+            }
+
+            foreach (IOrderItem item in OrderItems)
+            {
+                if (item.Calories >= min && item.Calories <= max)
+                {
+                    results.Add(item);
+                }
+            }
+            return results;
+        }
 
     }
 }

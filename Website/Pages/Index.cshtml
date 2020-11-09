@@ -7,71 +7,111 @@
     ViewData["Title"] = "Home page";
 }
 
-    <div class="text-center">
-        <h1 class="display-4">Bleakwind Buffet</h1>
+    <form id="searching-function">
 
-        <p>
-            We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim.
-            Shake the blood off your sword and sake your thirst with one of our old-fashioned sailor sodas.
-            Hack into a Smokehouse Skeleton with your dagger. Or vanquish the mighty Thalmor Triple Burger!
-            You’ve had a hard adventure and earned your loot, so spend it with us!
-        </p>
+        <div id="search">
+            <input type="text" name="SearchBar" value="@Model.SearchTerms" />
+            <input type="submit" value="Search">
+        </div>
 
+        
 
-        <h2>Entrees</h2>
+        <div id="filters">
 
-        @foreach (IOrderItem entree in Menu.Entrees())
-        {
+            <h4>Categories</h4>
+            <label>
+                <input type="checkbox" name="Categories" value="Entrees" checked="@Model.Categories.Contains("Entrees")" />
+                Entrees
+            </label>
+            <label>
+                <input type="checkbox" name="Categories" value="Sides" checked="@Model.Categories.Contains("Sides")" />
+                Sides
+            </label>
+            <label>
+                <input type="checkbox" name="Categories" value="Drinks" checked="@Model.Categories.Contains("Drinks")" />
+                Drinks
+            </label>
+
+            <h4>Price</h4>
             <div>
-                @("$" + entree.Price)
-                @("   -   " + entree.ToString())
-                @("   -   " + entree.Calories + " Calories")
-            </div>
-        }
-        <p> </p>
-
-        <h2>Sides</h2>
-
-        @foreach (IOrderItem side in Menu.Sides())
-        {
-            <div>
-                @("$" + side.Price)
-                @("   -   " + side.ToString())
-                @("   -   " + side.Calories + " Calories")
-            </div>
-        }
-        <p> </p>
-
-        <h2>Drinks</h2>
-
-        @foreach (IOrderItem drink in Menu.Drinks())
-        {
-            <div>
-                @("$" + drink.Price)
-                @("   -   " + drink.ToString())
-                @("   -   " + drink.Calories + " Calories")
+                Between $
+                <input name="PriceMin" type="number" min="0" max="20" step="0.01" placeholder="min" />
+                and $
+                <input name="PriceMax" type="number" min="0" max="20" step="0.01" placeholder="max" />
             </div>
 
-        }
-        <p> </p>
+            <h4>Calories</h4>
+            <div>
+                Between
+                <input name="CaloriesMin" type="number" min="0" max="20" step="0.01" placeholder="min" />
+                and
+                <input name="CaloriesMax" type="number" min="0" max="20" step="0.01" placeholder="max" />
+            </div>
+
+        </div>
+
+        <div class="text-center">
+
+            <h1 class="display-4">Bleakwind Buffet</h1>
+            <p>
+                We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim.
+                Shake the blood off your sword and sake your thirst with one of our old-fashioned sailor sodas.
+                Hack into a Smokehouse Skeleton with your dagger. Or vanquish the mighty Thalmor Triple Burger!
+                You’ve had a hard adventure and earned your loot, so spend it with us!
+            </p>
+
+            <h4 class="category">Entrees</h4>
+            @foreach (IOrderItem item in Model._Entrees)
+            {
+                <div class="details">
+                    <div class="name">@(item.ToString())</div>
+                    <div class="price">@("- $" + item.Price)</div>
+                    <div class="calories">@("- " + item.Calories) Calories</div>
+                </div>
+            }
+
+            <h4 class="category">Sides</h4>
+            @foreach (IOrderItem item in Model._Entrees)
+            {
+                <div class="details">
+                    <div class="name">@(item.ToString())</div>
+                    <div class="price">@("- $" + item.Price)</div>
+                    <div class="calories">@("- " + item.Calories) Calories</div>
+                </div>
+            }
+
+            <h4 class="category">Drinks</h4>
+            @foreach (IOrderItem item in Model._Entrees)
+            {
+                <div class="details">
+                    <div class="name">@(item.ToString())</div>
+                    <div class="price">@("- $" + item.Price)</div>
+                    <div class="calories">@("- " + item.Calories) Calories</div>
+                </div>
+            }
+
+            <h2>Meal Combos</h2>
+            <p>
+                You can choose to add any entree, side, and drink as a combo to get a $1 discount off your meal!
+            </p>
+            <p> </p>
+
+            <h2>Flavors for the Sailor Soda</h2>
+
+            <div>Blackberry</div>
+            <div>Cherry</div>
+            <div>Grapefruit</div>
+            <div>Lemon</div>
+            <div>Peach</div>
+            <div>Watermelon</div>
+            <p> </p>
+            <p> </p>
+
+            <p>Click <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLaWLPB2Z4vf9o-3J18g6SbBeSAvDvtrwx&index=4"> HERE </a>to view the last LIVING dinosaur! Not click-bait!</p>
+        </div>
 
 
-        <h2>Meal Combos</h2>
-        <p>
-            You can choose to add any entree, side, and drink as a combo to get a $1 discount off your meal!
-        </p>
-        <p> </p>
+    </form>
 
-        <h2>Flavors for the Sailor Soda</h2>
 
-        <div>Blackberry</div>
-        <div>Cherry</div>
-        <div>Grapefruit</div>
-        <div>Lemon</div>
-        <div>Peach</div>
-        <div>Watermelon</div>
-        <p> </p>
-        <p> </p>
-
-        <p>Click <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=PLaWLPB2Z4vf9o-3J18g6SbBeSAvDvtrwx&index=4"> HERE </a>to view the last LIVING dinosaur! Not click-bait!</p>
-    </div>
+    
