@@ -144,5 +144,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
                 AJ.Ice = false;
             });
         }
+
+        [Fact]
+        public void HasCorrectDescription()
+        {
+            var item = new AretinoAppleJuice();
+            Assert.Equal("Fresh squeezed apple juice.", item.Description);
+        }
     }
 }

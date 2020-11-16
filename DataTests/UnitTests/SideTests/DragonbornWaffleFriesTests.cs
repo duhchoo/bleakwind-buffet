@@ -99,5 +99,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
                 dbwf.Size = Size.Large;
             });
         }
+
+        [Fact]
+        public void HasCorrectDescription()
+        {
+            var item = new DragonbornWaffleFries();
+            Assert.Equal("Crispy fried potato waffle fries.", item.Description);
+        }
     }
 }

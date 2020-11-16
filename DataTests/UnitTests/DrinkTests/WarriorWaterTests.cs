@@ -173,5 +173,12 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
                 WW.Lemon = false;
             });
         }
+
+        [Fact]
+        public void HasCorrectDescription()
+        {
+            var item = new WarriorWater();
+            Assert.Equal("It’s water. Just water.", item.Description);
+        }
     }
 }
