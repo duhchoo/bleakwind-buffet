@@ -86,6 +86,10 @@ namespace BleakwindBuffet.Data.Sides
                 }
             }
         }
+        public string Name
+        {
+            get => this.ToString();
+        }
 
     }
 }

@@ -36,6 +36,38 @@ namespace BleakwindBuffet.Data.Drinks
         /// </summary>
         public abstract List<string> SpecialInstructions { get; }
 
-        
+        private string description = "";
+        public virtual string Description
+        {
+            get
+            {
+                if (ToString().Contains("Sailor Soda"))
+                {
+                    description = "An old-fashioned jerked soda, carbonated water and flavored syrup poured over a bed of crushed ice.";
+                }
+
+                if (ToString().Contains("Markarth Milk"))
+                {
+                    description = "Hormone-free organic 2% milk.";
+                }
+
+                if (ToString().Contains("Aretino Apple Juice"))
+                {
+                    description = "Fresh squeezed apple juice.";
+                }
+
+                if (ToString().Contains("Candlehearth Coffee"))
+                {
+                    description = "Fair trade, fresh ground dark roast coffee.";
+                }
+
+                if (ToString().Contains("Warrior Water"))
+                {
+                    description = "It’s water. Just water.";
+                }
+
+                return description;
+            }
+        }
     }
 }

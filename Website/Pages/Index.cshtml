@@ -10,7 +10,7 @@
     <form id="searching-function">
 
         <div id="search">
-            <input type="text" name="SearchBar" value="@Model.SearchTerms" />
+            <input type="text" name="SearchTerms" value="@Model.SearchTerms" />
             <input type="submit" value="Search">
         </div>
 
@@ -60,35 +60,43 @@
                 You’ve had a hard adventure and earned your loot, so spend it with us!
             </p>
 
-            <h4 class="category">Entrees</h4>
-            @foreach (IOrderItem item in Model._Entrees)
-            {
-                <div class="details">
-                    <div class="name">@(item.ToString())</div>
-                    <div class="price">@("- $" + item.Price)</div>
-                    <div class="calories">@("- " + item.Calories) Calories</div>
+            <div  id="flex-columns">
+                <div>
+                    <h4 class="category">- Entrees -</h4>
+                    @foreach (IOrderItem item in Model._Entrees)
+                    {
+                        <div class="details">
+                            <div class="name">@(item.ToString() + " - $" + item.Price)</div>
+                            <div class="description">@(item.Description)</div>
+                            <div class="calories">@("o " + item.Calories) Calories</div>
+                        </div>
+                    }
                 </div>
-            }
 
-            <h4 class="category">Sides</h4>
-            @foreach (IOrderItem item in Model._Entrees)
-            {
-                <div class="details">
-                    <div class="name">@(item.ToString())</div>
-                    <div class="price">@("- $" + item.Price)</div>
-                    <div class="calories">@("- " + item.Calories) Calories</div>
+                <div>
+                    <h4 class="category">- Sides -</h4>
+                    @foreach (IOrderItem item in Model._Sides)
+                    {
+                        <div class="details">
+                            <div class="name">@(item.ToString() + " - $" + item.Price)</div>
+                            <div class="description">@(item.Description)</div>
+                            <div class="calories">@("o " + item.Calories) Calories</div>
+                        </div>
+                    }
                 </div>
-            }
 
-            <h4 class="category">Drinks</h4>
-            @foreach (IOrderItem item in Model._Entrees)
-            {
-                <div class="details">
-                    <div class="name">@(item.ToString())</div>
-                    <div class="price">@("- $" + item.Price)</div>
-                    <div class="calories">@("- " + item.Calories) Calories</div>
+                <div>
+                    <h4 class="category">- Drinks -</h4>
+                    @foreach (IOrderItem item in Model._Drinks)
+                    {
+                        <div class="details">
+                            <div class="name">@(item.ToString() + " - $" + item.Price)</div>
+                            <div class="description">@(item.Description)</div>
+                            <div class="calories">@("o " + item.Calories) Calories</div>
+                        </div>
+                    }
                 </div>
-            }
+            </div>
 
             <h2>Meal Combos</h2>
             <p>

@@ -47,6 +47,9 @@ namespace BleakwindBuffet.Data.Entrees
         {
             return "Thugs T-Bone";
         }
-
+        public string Name
+        {
+            get => this.ToString();
+        }
     }
 }

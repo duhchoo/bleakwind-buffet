@@ -127,6 +127,10 @@ namespace BleakwindBuffet.Data.Entrees
         {
             return "Garden Orc Omelette";
         }
+        public string Name
+        {
+            get => this.ToString();
+        }
 
     }
 }

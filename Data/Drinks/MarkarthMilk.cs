@@ -105,6 +105,11 @@ namespace BleakwindBuffet.Data.Drinks
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
                 }
             }
+
+        }
+        public string Name
+        {
+            get => this.ToString();
         }
     }
 }

@@ -170,5 +170,7 @@ namespace BleakwindBuffet.Data
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
             }
         }
+
+        public string Description { get; }
     }
 }

@@ -107,6 +107,10 @@ namespace BleakwindBuffet.Data.Entrees
         {
             return "Philly Poacher";
         }
+        public string Name
+        {
+            get => this.ToString();
+        }
 
     }
 }

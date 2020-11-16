@@ -207,6 +207,10 @@ namespace BleakwindBuffet.Data.Entrees
         {
             return "Double Draugr";
         }
+        public string Name
+        {
+            get => this.ToString();
+        }
 
     }
 }

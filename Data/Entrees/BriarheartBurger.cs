@@ -147,5 +147,9 @@ namespace BleakwindBuffet.Data.Entrees
         {
             return "Briarheart Burger";
         }
+        public string Name
+        {
+            get => this.ToString();
+        }
     }
 }

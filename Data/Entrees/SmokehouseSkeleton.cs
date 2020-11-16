@@ -127,6 +127,10 @@ namespace BleakwindBuffet.Data.Entrees
         {
             return "Smokehouse Skeleton";
         }
+        public string Name
+        {
+            get => this.ToString();
+        }
 
     }
 }

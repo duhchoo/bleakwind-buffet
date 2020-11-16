@@ -79,7 +79,7 @@ form#searching-function {
 }
 
     #searching-function h4 {
-        margin-bottom: 5rem;
+        margin-bottom: 1.5rem;
         font-size: 1.2rem;
     }
 
@@ -101,15 +101,45 @@ form#searching-function {
     }
 
     #filters h4 {
-        margin-bottom: 5rem;
-        color: red;
-    }
-
-    #filters input[type=number] {
-        width: 3rem;
+        margin-bottom: 1.5rem;
+        color: black;
     }
 
 .category {
-    margin: 1.5rem;
-    text-decoration: underline;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+}
+
+.details {
+    margin-bottom: 2rem;
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.name {
+    font-size: large;
+    font-weight: bold;
+}
+
+.calories {
+    font-size: smaller;
+    margin-left: 2rem;
+}
+
+.description {
+    font-style: italic;
+    margin-left: 2rem;
+}
+
+.flex-columns {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 490px) {
+    .flex-columns {
+        flex-direction: column;
+    }
 }

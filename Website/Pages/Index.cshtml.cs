@@ -93,8 +93,42 @@ namespace Website.Pages
             SearchTerms = Request.Query["SearchItems"];
             Categories = Request.Query["Categories"];
 
-            OrderItems = Menu.Search(Menu.FullMenu(), SearchTerms);
-            OrderItems = Menu.FilterByCategory(OrderItems, Categories);
+            OrderItems = Menu.FullMenu();
+
+            if (SearchTerms != null)
+            {
+                OrderItems = OrderItems.Where(item => item != null
+                && item.ToString().Contains(SearchTerms, StringComparison.InvariantCultureIgnoreCase)
+                || item.Description.Contains(SearchTerms, StringComparison.InvariantCultureIgnoreCase));
+            }
+            
+            if (Categories != null && Categories.Length > 0)
+            {
+                var results = new List<IOrderItem>();
+
+                if (Categories.Contains("Entrees"))
+                {
+                    foreach (IOrderItem item in OrderItems.Where(item => item != null && item is Entree))
+                    {
+                        results.Add(item);
+                    }
+                }
+                if (Categories.Contains("Sides"))
+                {
+                    foreach (IOrderItem item in OrderItems.Where(item => item != null && item is Side))
+                    {
+                        results.Add(item);
+                    }
+                }
+                if (Categories.Contains("Drinks"))
+                {
+                    foreach (IOrderItem item in OrderItems.Where(item => item != null && item is Drink))
+                    {
+                        results.Add(item);
+                    }
+                }
+                OrderItems = results;
+            }
             OrderItems = Menu.FilterByPrice(OrderItems, PriceMin, PriceMax);
             OrderItems = Menu.FilterByCalories(OrderItems, CaloriesMin, CaloriesMax);
 

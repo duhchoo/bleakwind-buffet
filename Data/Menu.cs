@@ -243,9 +243,15 @@ namespace BleakwindBuffet.Data
             {
                 return OrderItems;
             }
+
             foreach (IOrderItem item in OrderItems)
             {
-                if (item.ToString().Contains(SearchTerms))
+                string upperName = item.ToString().ToUpper();
+                string upperDescription = item.Description.ToUpper();
+
+                //string search = SearchTerms.ToUpper();
+
+                if (item.ToString().Contains(SearchTerms) /*|| upperDescription.Contains(search)*/)
                 {
                     results.Add(item);
                 }

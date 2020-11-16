@@ -255,6 +255,9 @@ namespace BleakwindBuffet.Data.Entrees
         {
             return "Thalmor Triple";
         }
-
+        public string Name
+        {
+            get => this.ToString();
+        }
     }
 }

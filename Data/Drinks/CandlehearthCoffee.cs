@@ -145,6 +145,10 @@ namespace BleakwindBuffet.Data.Drinks
                 }
             }
         }
+        public string Name
+        {
+            get => this.ToString();
+        }
 
     }
 }
